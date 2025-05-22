@@ -1,0 +1,254 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500&display=swap');
+
+/* ===== Variáveis Minimalistas ===== */
+:root {
+    --primary: #2563eb;
+    --primary-light: #3b82f6;
+    --bg: #fafafa;
+    --card-bg: #ffffff;
+    --text: #1f2937;
+    --text-light: #6b7280;
+    --border: #e5e7eb;
+    --border-light: #f3f4f6;
+    --radius: 8px;
+    --shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+    --font: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+}
+
+/* ===== Reset ===== */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: var(--font);
+    background-color: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+}
+
+/* ===== Layout ===== */
+.container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 24px;
+    max-width: 1000px;
+    width: 100%;
+}
+
+/* ===== Cards ===== */
+.request-card,
+.response-card {
+    background: var(--card-bg);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    border: 1px solid var(--border);
+    padding: 32px;
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+}
+
+/* ===== Typography ===== */
+h1 {
+    font-size: 20px;
+    font-weight: 500;
+    color: var(--text);
+    text-align: center;
+}
+
+h2 {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-light);
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    text-align: center;
+}
+
+.description {
+    font-size: 14px;
+    color: var(--text-light);
+    text-align: center;
+}
+
+/* ===== Form ===== */
+#request-form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* ===== Drop Area ===== */
+#drop-area {
+    border: 2px dashed var(--border);
+    border-radius: var(--radius);
+    padding: 40px 20px;
+    text-align: center;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    position: relative;
+    background: var(--border-light);
+}
+
+#drop-area:hover,
+#drop-area.dragover {
+    border-color: var(--primary);
+    background: rgba(37, 99, 235, 0.02);
+}
+
+#drop-area p {
+    font-size: 14px;
+    color: var(--text-light);
+    font-weight: 400;
+    margin-bottom: 12px;
+}
+
+#file-input {
+    position: absolute;
+    inset: 0;
+    opacity: 0;
+    cursor: pointer;
+}
+
+#file-name {
+    font-size: 13px;
+    color: var(--text);
+    font-weight: 400;
+}
+
+/* ===== Input Group ===== */
+.input-group {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-light);
+}
+
+#text-input {
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 12px;
+    font-size: 14px;
+    font-family: var(--font);
+    resize: vertical;
+    min-height: 120px;
+    transition: border-color 0.2s ease;
+    background: var(--card-bg);
+}
+
+#text-input:focus {
+    outline: none;
+    border-color: var(--primary);
+}
+
+#text-input::placeholder {
+    color: var(--text-light);
+}
+
+/* ===== Button ===== */
+button[type="submit"] {
+    background: var(--primary);
+    color: white;
+    border: none;
+    border-radius: var(--radius);
+    padding: 12px 24px;
+    font-size: 14px;
+    font-weight: 400;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+button[type="submit"]:hover {
+    background: var(--primary-light);
+}
+
+button[type="submit"]:disabled {
+    background: var(--text-light);
+    cursor: not-allowed;
+}
+
+/* ===== Results ===== */
+.result-section {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.category-result,
+.response-result {
+    background: var(--border-light);
+    border-radius: var(--radius);
+    padding: 16px;
+    font-size: 14px;
+    line-height: 1.5;
+    color: var(--text);
+}
+
+.response-card p {
+    background: var(--border-light);
+    border-radius: var(--radius);
+    padding: 16px;
+    font-size: 14px;
+    color: var(--text-light);
+    text-align: center;
+}
+
+/* ===== Error ===== */
+.error-message {
+    background: #fef2f2;
+    color: #991b1b;
+    border-radius: var(--radius);
+    padding: 16px;
+    font-size: 14px;
+    border: 1px solid #fecaca;
+}
+
+.response-result {
+    white-space: pre-wrap;
+}
+
+/* ===== Responsive ===== */
+@media (max-width: 768px) {
+    .container {
+        grid-template-columns: 1fr;
+        gap: 16px;
+    }
+
+    .request-card,
+    .response-card {
+        padding: 24px;
+    }
+
+    #drop-area {
+        padding: 32px 16px;
+    }
+}
+
+@media (max-width: 480px) {
+    body {
+        padding: 16px;
+    }
+
+    .request-card,
+    .response-card {
+        padding: 20px;
+        gap: 20px;
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+}
